@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>HYPER 카드뉴스 — 다운로드 유도 9슬라이드 v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root {
+    --bg: #0A0A0B;
+    --surface: #17181B;
+    --surface2: #1F2023;
+    --lime: #C9FF3D;
+    --purple: #a855f7;
+    --pink: #ff2e88;
+    --mint: #00e5d0;
+    --coral: #f0997b;
+    --text: #F5F5F3;
+    --muted: #9A9AA2;
+  }
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    background: #050505;
+    font-family: 'Pretendard', sans-serif;
+    color: var(--text);
+    padding: 60px 0;
+  }
+  .deck { display: flex; flex-direction: column; align-items: center; gap: 48px; }
+  .card {
+    width: 1080px; height: 1350px; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; box-shadow: 0 30px 80px rgba(0,0,0,.6);
+    background: radial-gradient(circle at 82% 12%, rgba(168,85,247,.20), transparent 40%),
+                radial-gradient(circle at 78% 55%, rgba(201,255,61,.10), transparent 45%),
+                radial-gradient(circle at 10% 90%, rgba(168,85,247,.12), transparent 40%),
+                var(--bg);
+  }
+  .label {
+    position:absolute; top: 64px; left: 64px; font-family: 'Baloo 2', 'Pretendard', sans-serif;
+    font-size: 22px; letter-spacing: 2px; color: var(--lime); display:flex; align-items:center; gap:14px;
+  }
+  .label .n { color: var(--muted); }
+  .brand { position:absolute; bottom: 56px; left: 64px; font-family: 'Baloo 2', 'Pretendard', sans-serif; font-size: 20px; letter-spacing: 3px; color: var(--muted); }
+  .idx { position:absolute; bottom: 56px; right: 64px; font-family: 'Baloo 2', 'Pretendard', sans-serif; font-size: 20px; color: var(--muted); }
+  .headline { font-family: 'Black Han Sans', sans-serif; font-weight: 400; line-height: 1.18; letter-spacing: -0.5px; }
+
+  /* ---------- SLIDE 1 : INTRO ---------- */
+  .s1 {
+    justify-content: center; align-items: flex-start; padding: 0 64px;
+  }
+  .s1 .applogo { width: 96px; height: 96px; border-radius: 22px; margin-bottom: 28px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  .s1 .wordmark { width: 780px; margin-bottom: 44px; }
+  .s1 .headline { font-size: 56px; color: var(--text); max-width: 820px; margin-bottom: 26px; }
+  .s1 .sub { font-family:'Baloo 2', 'Pretendard', sans-serif; font-size: 24px; letter-spacing:1px; color: var(--lime); max-width: 720px; }
+  .s1 .sports { position:absolute; bottom: 150px; left:64px; right:64px; font-family:'Baloo 2', 'Pretendard', sans-serif; font-size:22px; letter-spacing:3px; color: var(--muted); display:flex; gap:18px; }
+
+  /* ---------- SLIDE 2 : PROBLEM ---------- */
+  .s2 { padding: 220px 64px 0; }
+  .s2 .headline { font-size: 60px; margin-bottom: 90px; max-width: 920px; }
+  .s2 .cols { display:flex; gap: 28px; }
+  .s2 .col { flex:1; background: var(--surface); border-radius: 4px; padding: 36px 28px; border-top: 4px solid var(--lime); display:flex; flex-direction:column; gap: 16px; min-height: 420px; }
+  .s2 .col .ic { font-size: 48px; margin-bottom: 4px; }
+  .s2 .col h3 { font-family:'Black Han Sans'; font-size: 34px; }
+  .s2 .col .yes { color: var(--lime); font-weight:700; font-size: 22px; }
+  .s2 .col .no { color: var(--muted); font-size: 20px; }
+  .s2 .col .divider { height:1px; background: rgba(255,255,255,.12); margin: 4px 0; }
+  .s2 .col .desc { color: var(--muted); font-size: 20px; line-height:1.5; }
+
+  /* ---------- SLIDE 3 : SOLUTION REVEAL ---------- */
+  .s3 { justify-content:center; padding: 0 64px; }
+  .s3 .tag { font-family:'Baloo 2', 'Pretendard', sans-serif; font-size:22px; letter-spacing:4px; color: var(--purple); margin-bottom:32px; }
+  .s3 .headline { font-size: 84px; max-width: 880px; margin-bottom: 30px; }
+  .s3 .headline .accent { color: var(--lime); }
+  .s3 .sub { font-size: 28px; color: var(--muted); max-width: 700px; }
+  .s3 .flow { margin-top: 70px; display:flex; align-items:center; gap:0; font-family:'Baloo 2', 'Pretendard', sans-serif; font-size:24px; }
+  .s3 .flow .step { background: var(--surface); padding: 18px 26px; border-radius: 999px; color: var(--text); }
+  .s3 .flow .arrow { color: var(--lime); padding: 0 18px; font-size: 26px; }
+
+  /* ---------- SLIDE 4 : QUIZ UI ---------- */
+  .s4 { padding: 150px 64px 0; align-items:center; }
+  .s4 .headline { font-size: 54px; text-align:center; margin-bottom: 64px; }
+  .phone { width: 620px; background: linear-gradient(165deg,#1c0f2e,#0e0a17); border-radius: 44px; padding: 44px 40px; border: 1px solid rgba(255,255,255,.08); }
+  .phone .qtag { font-family:'Baloo 2', 'Pretendard', sans-serif; color: var(--purple); font-size:20px; letter-spacing:2px; margin-bottom: 18px;}
+  .phone .qbar { height:6px; background: rgba(255,255,255,.1); border-radius: 4px; margin-bottom: 34px; overflow:hidden;}
+  .phone .qbar i { display:block; width:16%; height:100%; background: var(--lime); }
+  .phone .qtitle { font-family:'Black Han Sans'; font-size: 40px; margin-bottom: 32px; }
+  .opt { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 26px 26px; margin-bottom: 18px; }
+  .opt.active { border-color: var(--lime); background: rgba(201,255,61,.08); }
+  .opt .t1 { font-size: 26px; color: var(--text); margin-bottom: 6px; }
+  .opt .t2 { font-size: 18px; color: var(--muted); }
+
+  /* ---------- SLIDE 5 : MATCH RESULT ---------- */
+  .s5 { padding: 130px 64px 0; align-items:center; }
+  .s5 .tag { font-family:'Baloo 2', 'Pretendard', sans-serif; font-size:22px; letter-spacing:4px; color: var(--lime); margin-bottom: 22px; }
+  .s5 .headline { font-size: 46px; text-align:center; margin-bottom: 40px; }
+  .result-card {
+    width: 680px; position:relative; border-radius: 32px; padding: 44px 44px 36px;
+    background: linear-gradient(155deg, rgba(255,255,255,.14), rgba(255,255,255,.03) 40%, rgba(255,255,255,.06) 100%), rgba(30,32,36,.55);
+    border: 1px solid rgba(255,255,255,.35);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 0 40px rgba(255,255,255,.04), 0 24px 60px rgba(0,0,0,.5);
+    backdrop-filter: blur(18px);
+  }
+  .result-card::before {
+    content:""; position:absolute; top:0; left: 8%; width: 60%; height: 46%; border-radius: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 70%);
+    pointer-events:none;
+  }
+  .result-card .match { position:absolute; top: -22px; right: 34px; background: var(--lime); color:#0A0A0B; font-family:'Baloo 2', 'Pretendard', sans-serif; font-weight:700; font-size:22px; padding: 10px 20px; border-radius: 999px; z-index:2; }
+  .result-card img.mascot { display:block; height: 400px; margin: 0 auto; position:relative; z-index:1; }
+  .result-card .type-name { font-family:'Baloo 2', sans-serif; font-weight:800; font-size: 56px; text-align:center; margin-top:6px; color: #FF3B3B; position:relative; z-index:1; }
+  .result-card .type-anim { text-align:center; color: var(--muted); font-size:24px; margin-bottom: 18px; position:relative; z-index:1; }
+  .result-card .badges { display:flex; justify-content:center; gap:10px; margin-bottom: 24px; position:relative; z-index:1; }
+  .result-card .badge { background: rgba(255,59,59,.08); font-size:18px; padding: 8px 18px; border-radius: 999px; color: #FF3B3B; font-weight:600; border: 1px solid rgba(255,59,59,.55); }
+  .result-card .desc { text-align:center; font-size: 22px; color: var(--muted); line-height:1.5; margin-bottom: 30px; position:relative; z-index:1; }
+  .others { display:flex; gap: 14px; justify-content:center; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.14); position:relative; z-index:1; }
+  .others .tile {
+    width: 96px; height: 96px; border-radius: 18px; display:flex; align-items:center; justify-content:center;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
+  }
+  .others .tile img { height: 78px; }
+  .others .label8 { font-family:'Baloo 2', 'Pretendard', sans-serif; font-size: 16px; color: var(--muted); align-self:center; margin-left:6px; white-space:nowrap; line-height:1.4; }
+
+  /* ---------- SLIDE 6 : MAP (stylized, based on real geography) ---------- */
+  .s6 { padding: 150px 64px 0; }
+  .s6 .headline { font-size: 54px; margin-bottom: 44px; max-width: 800px; }
+  .map { height: 780px; border-radius: 24px; position:relative; overflow:hidden; background: #0d0e10; border: 1px solid rgba(255,255,255,.08); }
+  .map img { width:100%; height:100%; object-fit: cover; display:block; }
+  .map-caption {
+    position:absolute; bottom: 28px; left: 28px; right: 28px; display:flex; justify-content:space-between; align-items:flex-end;
+    pointer-events:none;
+  }
+  .map-caption .chips { display:flex; gap:8px; }
+  .map-caption .chip { background: rgba(0,0,0,.65); backdrop-filter: blur(6px); font-family:'Baloo 2', 'Pretendard', sans-serif; font-size:16px; padding: 8px 14px; border-radius: 999px; color: var(--lime); border:1px solid rgba(201,255,61,.4); }
+  .road { position:absolute; background: rgba(255,214,10,.55); }
+  .road.r1 { width: 1300px; height: 34px; top: 120px; left: -420px; transform: rotate(28deg); transform-origin: left center; }
+  .road.r2 { width: 900px; height: 22px; top: 560px; left: -260px; transform: rotate(6deg); }
+  .campus-zone {
+    position:absolute; top: 470px; left: 430px; width: 560px; height: 300px;
+    background: rgba(201,255,61,.08); border: 1.5px dashed var(--lime); border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+  }
+  .lake { position:absolute; top: 500px; left: 620px; width: 300px; height: 160px; background: rgba(120,170,255,.14); border-radius: 50%; }
+  .geo-label { position:absolute; font-family:'Pretendard'; font-size: 18px; color: var(--muted); }
+  .geo-label.main { font-family:'Black Han Sans'; font-size: 26px; color: var(--lime); }
+  .geo-label.station { display:flex; align-items:center; gap:6px; font-size:17px; color: var(--text); }
+  .pin { position:absolute; width: 56px; height:56px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display:flex; align-items:center; justify-content:center; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+  .pin span { transform: rotate(45deg); font-size: 20px; }
+  .pin.hot { background: var(--lime); }
+  .pin.p2 { background: var(--purple); }
+  .pin.p3 { background: var(--pink); }
+  .live-badge { position:absolute; background: var(--surface2); border:1px solid rgba(255,255,255,.1); border-radius: 999px; padding: 10px 18px; font-family:'Baloo 2', 'Pretendard', sans-serif; font-size:18px; display:flex; align-items:center; gap:8px; }
+  .live-badge .dot { width:8px; height:8px; border-radius:50%; background: var(--lime); }
+  .loc-tag { position:absolute; top: 34px; left: 34px; background: rgba(0,0,0,.5); backdrop-filter: blur(4px); padding: 12px 20px; border-radius: 999px; font-family:'Baloo 2', 'Pretendard', sans-serif; font-size:18px; color: var(--text); }
+
+  /* ---------- SLIDE 7 : DROPIN BOOKING (hero visual) ---------- */
+  .s7 { padding: 0; }
+  .hero-cover {
+    position:relative; height: 900px; overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(168,85,247,.35), transparent 55%),
+      radial-gradient(circle at 75% 70%, rgba(201,255,61,.22), transparent 50%),
+      linear-gradient(160deg, #241833 0%, #0c0710 70%);
+  }
+  .hero-cover .grain {
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 2px, transparent 2px 4px);
+  }
+  .hero-cover .energy-ring { position:absolute; border-radius:50%; border: 2px solid rgba(201,255,61,.25); }
+  .hero-cover .er1 { width: 620px; height: 620px; right: -140px; top: -60px; }
+  .hero-cover .er2 { width: 440px; height: 440px; right: -20px; top: 40px; border-color: rgba(168,85,247,.3); }
+  .hero-cover .er3 { width: 280px; height: 280px; right: 60px; top: 120px; border-color: rgba(201,255,61,.4); }
+  .hero-cover .stat-block { position:absolute; right: 60px; top: 220px; text-align:right; }
+  .hero-cover .stat-block .big { font-family:'Baloo 2', sans-serif; font-weight:800; color: var(--lime); font-size: 96px; line-height:1; }
+  .hero-cover .stat-block .lbl { font-family:'Baloo 2', 'Pretendard', sans-serif; color: rgba(255,255,255,.7); font-size: 22px; margin-top: 10px; }
+  .hero-cover .chips-row { position:absolute; top: 40px; left: 40px; display:flex; gap:10px; }
+  .hero-cover .chip2 { background: var(--lime); color:#0A0A0B; font-weight:700; font-size:18px; padding: 10px 20px; border-radius: 999px; }
+  .hero-cover .icon-col { position:absolute; top: 40px; right: 36px; display:flex; flex-direction:column; gap: 22px; }
+  .hero-cover .icon-col .ic-btn { width:56px; height:56px; border-radius:50%; background: rgba(0,0,0,.35); backdrop-filter: blur(6px); display:flex; align-items:center; justify-content:center; font-size:26px; color:#fff; }
+  .hero-cover .match-badge { position:absolute; bottom: 150px; right: 40px; background: rgba(0,0,0,.5); backdrop-filter: blur(6px); color: var(--lime); font-family:'Baloo 2', 'Pretendard', sans-serif; font-weight:700; font-size:24px; padding: 12px 22px; border-radius: 999px; border: 1px solid rgba(201,255,61,.4); }
+  .hero-cover .title-block { position:absolute; left: 40px; bottom: 96px; }
+  .hero-cover .title-block h3 { font-family:'Black Han Sans'; font-size: 48px; color:#fff; margin-bottom: 8px; }
+  .hero-cover .title-block .meta { font-size: 22px; color: rgba(255,255,255,.75); }
+  .hero-cover .dots { position:absolute; bottom: 56px; left: 40px; display:flex; gap:8px; }
+  .hero-cover .dots span { width: 34px; height: 5px; border-radius: 3px; background: rgba(255,255,255,.25); }
+  .hero-cover .dots span.on { background: #fff; }
+  .below { padding: 40px 56px 0; }
+  .mbti-panel { background: var(--surface); border-radius: 20px; padding: 26px 28px; border-left: 4px solid var(--purple); margin-bottom: 22px; }
+  .mbti-panel .mtag { font-family:'Baloo 2', 'Pretendard', sans-serif; color: var(--purple); font-size:17px; letter-spacing:1px; margin-bottom:10px; }
+  .mbti-panel .mtitle { font-size: 26px; margin-bottom: 8px; }
+  .mbti-panel .mtitle .hl { color: var(--lime); font-weight:700; }
+  .mbti-panel .msub { font-size: 18px; color: var(--muted); }
+  .tag-row { display:flex; gap:10px; margin-bottom: 28px; }
+  .tag-row .t { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); font-size:18px; padding: 10px 18px; border-radius: 999px; color: var(--text); }
+  .cta-btn { display:block; text-align:center; background: var(--lime); color:#0A0A0B; font-weight:700; font-size:26px; padding: 24px; border-radius: 16px; font-family:'Pretendard'; margin-bottom: 40px; }
+
+  /* ---------- SLIDE 8 : FREE DROP-IN OFFER ---------- */
+  .s8 { justify-content:center; padding: 0 64px; }
+  .s8 .tag { font-family:'Baloo 2', 'Pretendard', sans-serif; font-size:22px; letter-spacing:4px; color: var(--lime); margin-bottom:32px; }
+  .s8 .headline { font-size: 76px; margin-bottom: 26px; }
+  .s8 .headline .accent { color: var(--lime); }
+  .s8 .sub { font-size: 28px; color: var(--muted); max-width: 700px; margin-bottom: 56px; }
+  .offer-steps { display:flex; gap: 24px; }
+  .offer-step {
+    flex:1; background: var(--surface); border-radius: 24px; padding: 34px 30px; border: 1px solid rgba(255,255,255,.1);
+    position:relative;
+  }
+  .offer-step .num { position:absolute; top: -20px; left: 28px; background: var(--lime); color:#0A0A0B; font-family:'Baloo 2'; font-weight:800; font-size:22px; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+  .offer-step .ic { font-size: 46px; margin: 14px 0 18px; }
+  .offer-step h4 { font-family:'Black Han Sans'; font-size: 30px; margin-bottom: 10px; }
+  .offer-step p { font-size: 19px; color: var(--muted); line-height:1.5; }
+  .offer-arrow { display:flex; align-items:center; font-size: 40px; color: var(--lime); }
+  .s9 { justify-content:center; padding: 0 64px; }
+  .s9 .tag { font-family:'Baloo 2', 'Pretendard', sans-serif; font-size:22px; letter-spacing:4px; color: var(--muted); margin-bottom: 28px; }
+  .s9 .headline { font-size: 78px; max-width: 880px; margin-bottom: 30px; }
+  .s9 .headline .accent { color: var(--lime); }
+  .s9 .sub { font-size: 30px; color: var(--muted); }
+
+  /* ---------- SLIDE 10 : CTA ---------- */
+  .s10 { justify-content:center; align-items:center; text-align:center; padding: 0 64px; }
+  .s10 .wordmark { width: 640px; margin-bottom: 44px; }
+  .s10 .applogo-final { width: 260px; height: 260px; border-radius: 58px; margin-bottom: 44px; box-shadow: 0 24px 60px rgba(0,0,0,.55); }
+  .store-badge { display:flex; align-items:center; gap:16px; background: var(--surface); border: 1px solid rgba(255,255,255,.12); padding: 18px 32px; border-radius: 16px; font-size: 24px; font-family: 'Baloo 2', 'Pretendard', sans-serif; }
+  .s10 .headline { font-size: 46px; margin-bottom: 60px; }
+  .stores { display:flex; gap: 20px; }
+  .store-badge img { width: 44px; height: 44px; border-radius: 10px; }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- SLIDE 1 : INTRO -->
+  <div class="card s1">
+    <img class="wordmark" src="assets/wordmark_white.png">
+    <div class="headline">성향으로 매칭하고,<br>드랍인으로 시작한다.</div>
+    <div class="sub">HYBRID FITNESS DISCOVERY &amp; PLATFORM</div>
+    <div class="sports">CROSSFIT · HYROX · F45 · FUNCTIONAL</div>
+  </div>
+
+  <!-- SLIDE 2 : PROBLEM -->
+  <div class="card s2">
+    <div class="label"><span class="n">01</span> PROBLEM</div>
+    <div class="headline">탐색하기 어려운 박스들,<br>저희가 한번에 찾아드려요.</div>
+    <div class="cols">
+      <div class="col"><div class="ic">📱</div><h3>인스타그램</h3><div class="yes">분위기 O</div><div class="divider"></div><div class="no">예약·전환 X</div><div class="desc">우리 동네 박스가 애초에 노출되지 않는다.</div></div>
+      <div class="col"><div class="ic">📝</div><h3>네이버 · 블로그</h3><div class="yes">예약·리뷰 O</div><div class="divider"></div><div class="no">검색 요구 · 비시각적</div><div class="desc">분위기·강도 같은 판단 근거가 뒤로 밀린다.</div></div>
+      <div class="col"><div class="ic">🏋️</div><h3>시설 이질성</h3><div class="yes">박스마다 다른 결</div><div class="divider"></div><div class="no">비교 기준 없음</div><div class="desc">무엇을 기준으로 골라야 할지 알 수 없다.</div></div>
+    </div>
+    <div class="brand">HYPER</div>
+    <div class="idx">2</div>
+  </div>
+
+  <!-- SLIDE 3 : SOLUTION REVEAL -->
+  <div class="card s3">
+    <div class="tag">02 · HOW IT WORKS</div>
+    <div class="headline">45초, 앱 안에서<br><span class="accent">전부 끝난다.</span></div>
+    <div class="sub">성향 테스트부터 드랍인 예약까지, 한 세션 안에서 이어진다.</div>
+    <div class="flow">
+      <div class="step">성향 테스트</div><div class="arrow">→</div>
+      <div class="step">매칭</div><div class="arrow">→</div>
+      <div class="step">드랍인</div>
+    </div>
+    <div class="idx">3</div>
+  </div>
+
+  <!-- SLIDE 4 : QUIZ UI -->
+  <div class="card s4">
+    <div class="headline">6개 질문으로<br>당신의 운동 성향을 찾는다.</div>
+    <div class="phone">
+      <div class="qtag">성향 테스트 · Q1 / 6</div>
+      <div class="qbar"><i></i></div>
+      <div class="qtitle">어떤 공간이 끌려?</div>
+      <div class="opt"><div class="t1">🔥 쇠 냄새 나는 터프한 날것의 짐</div><div class="t2">하드코어</div></div>
+      <div class="opt"><div class="t1">✨ 조명 · 인테리어 예쁜 감각적인 곳</div><div class="t2">트렌디</div></div>
+      <div class="opt active"><div class="t1">🤍 군더더기 없이 깔끔 · 미니멀</div><div class="t2">클린</div></div>
+    </div>
+    <div class="idx" style="right:64px; bottom:56px;">4</div>
+    <div class="brand">HYPER</div>
+  </div>
+
+  <!-- SLIDE 5 : MATCH RESULT -->
+  <div class="card s5">
+    <div class="tag">MATCH RESULT</div>
+    <div class="headline">당신의 운동 성향은,</div>
+    <div class="result-card">
+      <div class="match">매칭률 92%</div>
+      <img class="mascot" src="assets/lion_monster.png">
+      <div class="type-name">MONSTER</div>
+      <div class="type-anim">Hardcore × Energy</div>
+      <div class="badges"><div class="badge">Hardcore</div><div class="badge">Energy</div><div class="badge">CrossFit</div></div>
+      <div class="desc">무게가 곧 자존심. 오늘도 1RM에 도전한다.</div>
+      <div class="others">
+        <div class="tile"><img src="assets/panther_hybrid.png"></div>
+        <div class="tile"><img src="assets/wolf_goinmul.png"></div>
+        <div class="tile"><img src="assets/cheetah_sonic.png"></div>
+        <div class="tile"><img src="assets/rhino_neo.png"></div>
+        <div class="tile"><img src="assets/eagle_nerd.png"></div>
+        <div class="label8">외 8종</div>
+      </div>
+    </div>
+    <div class="brand">HYPER</div>
+    <div class="idx">5</div>
+  </div>
+
+  <!-- SLIDE 6 : MAP -->
+  <div class="card s6">
+    <div class="label"><span class="n">03</span> DISCOVER</div>
+    <div class="headline">당신의 운동 성향은?</div>
+    <div class="map">
+      <img src="assets/mapshot.png">
+      <div class="loc-tag">📍 경희대학교 국제캠퍼스 인근 · 영통</div>
+    </div>
+    <div class="brand">HYPER</div>
+    <div class="idx">6</div>
+  </div>
+
+  <!-- SLIDE 7 : BOOKING (hero visual) -->
+  <div class="card s7">
+    <div class="hero-cover">
+      <div class="grain"></div>
+      <div class="energy-ring er1"></div>
+      <div class="energy-ring er2"></div>
+      <div class="energy-ring er3"></div>
+      <div class="stat-block">
+        <div class="big">14</div>
+        <div class="lbl">지금 운동 중</div>
+      </div>
+      <div class="chips-row">
+        <div class="chip2">크로스핏</div>
+      </div>
+      <div class="icon-col">
+        <div class="ic-btn">♡</div>
+        <div class="ic-btn">🔖</div>
+        <div class="ic-btn">↗</div>
+      </div>
+      <div class="match-badge">매치 98%</div>
+      <div class="title-block">
+        <h3>크로스핏 영통</h3>
+        <div class="meta">수원시 영통구 영통동 · 14명 운동 중</div>
+      </div>
+      <div class="dots"><span class="on"></span><span></span><span></span><span></span></div>
+    </div>
+    <div class="below">
+      <div class="mbti-panel">
+        <div class="mtag">✦ MBTI 운동 성향 매칭</div>
+        <div class="mtitle">당신은 <span class="hl">#새벽6시_하드코어_버서커</span></div>
+        <div class="msub">하드코어 얼리버드 유형에 맞는 박스를 매치율 순으로 보여드려요.</div>
+      </div>
+      <div class="tag-row">
+        <div class="t">하드코어</div>
+        <div class="t">기구 최상</div>
+        <div class="t">친절 코칭</div>
+      </div>
+      <div class="cta-btn">드랍인 신청 (잔여 2회)</div>
+    </div>
+    <div class="brand">HYPER</div>
+    <div class="idx">7</div>
+  </div>
+
+  <!-- SLIDE 9 : IMPACT -->
+  <div class="card s9">
+    <div class="tag">CLOSING</div>
+    <div class="headline">HIIT의 '발견'을,<br><span class="accent">다시 설계한다.</span></div>
+    <div class="sub">성향으로 매칭하고, 드랍인으로 시작한다.</div>
+  </div>
+
+  <!-- SLIDE 10 : CTA -->
+  <div class="card s10">
+    <img class="applogo-final" src="assets/applogo_nukki.png">
+    <div class="headline">지금, 나에게 맞는<br>박스를 찾아보세요.</div>
+    <div class="stores">
+      <div class="store-badge"><img src="assets/appstore.jpg">App Store</div>
+      <div class="store-badge"><img src="assets/googleplay.jpg">Google Play</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
